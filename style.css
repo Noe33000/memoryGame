@@ -7,17 +7,21 @@
 .img-container {
 	position: relative;
 	display: inline-block;
-	width: 25%;
+	margin-top: 10px;
+	margin-right: 1%;
+	width: 24%;
 	height: 25%;
-	overflow: hidden;
+	/*overflow: hidden;*/
 	z-index: 0;
 }
 
-.img-container:before {
+.card-hidden:before {
 	position: absolute;
+	content: '';
 	width: 100%;
 	height: 100%;
 	background-color: #777;
+	opacity: 1;
 	z-index: 1;
 }
 
@@ -25,4 +29,12 @@
 	width: 100%;
 	height: auto;
 	
+}
+
+#welcome-text {
+	text-align: center;
+}
+
+.btn-hidden {
+	display: none;
 }

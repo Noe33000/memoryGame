@@ -6,13 +6,22 @@ var photos = [
 	{url: 'img/snake.jpg', animal: 'snake'}
 ];
 
+console.log(photos.length);
+
 var arrayDoubled = [];
 
+/***********************
+SETTING GAME ENVIRONMENT
+***********************/
+
+setEnviroment();
 
 function setEnviroment() {
 
+	$('#start-btn').addClass('btn-hidden');
 	createFinalArray();
 	createCards();
+
 	
 }
 
@@ -33,7 +42,7 @@ function createCards() {
 	for (var i = 0; i < arrayDoubled.length; i++) {
 
 		var newDiv = document.createElement('div');
-		$(newDiv).addClass('img-container');
+		$(newDiv).addClass('img-container card-hidden');
 		$('#cards-container').append(newDiv);
 
 		var newImg = document.createElement('img');
@@ -44,7 +53,84 @@ function createCards() {
 
 }
 
-setEnviroment();
+
+/***********************
+   CARDS MANIPULATING
+***********************/
+var countGuesses = 0;
+var countRightGuesses = 0;
+var firstCardClicked;
+var secondCardClicked;
+var div1;
+var div2;
+
+ 
+
+$('.img-container').on('click', function() {
+
+	if (div1 == undefined && div2 == undefined) { 
+
+		if ($(this).hasClass('card-hidden')) {
+			$(this).removeClass('card-hidden');
+			firstCardClicked = $(this).children('.img-to-guess').attr('src');
+
+			div1 = this;
+		}
+
+	} 
+
+	else if (div1 != undefined && div2 == undefined) {
+
+		if ($(this).hasClass('card-hidden')) {
+			$(this).removeClass('card-hidden');
+			secondCardClicked = $(this).children('.img-to-guess').attr('src');
+
+			div2 = this;
+
+			checkMatch();
+		}
+	} 
+});
 
 
-console.log(arrayDoubled);
+
+
+function checkMatch() {
+
+	if (firstCardClicked == secondCardClicked) {
+
+		resetTempVars();
+		countRightGuesses++;
+		console.log('right ones :' + countRightGuesses);
+
+		if (countRightGuesses == photos.length) {
+			finishGame();
+		}
+	}
+	else {
+		setTimeout(function() {
+
+			$(div1).addClass('card-hidden');
+			$(div2).addClass('card-hidden');
+			resetTempVars();
+
+		}, 1200);
+	}
+	countGuesses++;
+}
+
+
+function resetTempVars() {
+	firstCardClicked = undefined;
+	secondCardClicked = undefined;
+	div1 = undefined;
+	div2 = undefined;
+}
+
+function finishGame() {
+	$('#cards-container').empty();
+	$('#result-text').text('You won finally, that was not very impressive');
+	$('#restart-btn').removeClass('btn-hidden');
+}
+
+
