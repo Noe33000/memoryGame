@@ -158,17 +158,17 @@ function finishGame() {
 
 function showResult() {
 	if (countGuesses / countRightGuesses >=1 && 
-		countGuesses / countRightGuesses <=1.5) {
-		$('#result-content').prepend('<p class="result-text">It took you ' + countGuesses + ' to guess ' + countRightGuesses + ' pairs of pictures. Congratulations, you have a very good memory!</p>');
+		countGuesses / countRightGuesses <=1.7) {
+		$('#result-content').prepend('<p class="result-text">It took you ' + countGuesses + ' times to guess ' + countRightGuesses + ' pairs of pictures. Congratulations, you have a very good memory!</p>');
 		$('#result-content').prepend('<img src="img/doge_suchwow.jpg" /> <br />');
 	}
-	else if (countGuesses / countRightGuesses > 1.5 && 
-		countGuesses / countRightGuesses <= 2) {
-		$('#result-content').prepend('<p class="result-text">It took you ' + countGuesses + ' to guess ' + countRightGuesses + ' pairs of pictures. Maybe you should play this game more often? ;-)</p>');
+	else if (countGuesses / countRightGuesses > 1.7 && 
+		countGuesses / countRightGuesses <= 2.3) {
+		$('#result-content').prepend('<p class="result-text">It took you ' + countGuesses + ' times to guess ' + countRightGuesses + ' pairs of pictures. Maybe you should play this game more often? ;-)</p>');
 		$('#result-content').prepend('<img src="img/sceptical_dog.jpg" /> <br />');
 	}
 	else {
-		$('#result-content').prepend('<p class="result-text">Finally! It took you ' + countGuesses + ' to guess ' + countRightGuesses + ' pairs of pictures. That was not very impressive.</p>');
+		$('#result-content').prepend('<p class="result-text">Finally! It took you ' + countGuesses + ' times to guess ' + countRightGuesses + ' pairs of pictures. That was not very impressive.</p>');
 		$('#result-content').prepend('<img src="img/grumpy_cat.jpg" /> <br />');
 	}
 }
