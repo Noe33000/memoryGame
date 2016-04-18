@@ -150,6 +150,11 @@ function resetTempVars() {
 	div2 = undefined;
 }
 
+
+/***********************
+   	FINISH GAME
+***********************/
+
 function finishGame() {
 	$('#cards-container').empty();
 	showResult();
